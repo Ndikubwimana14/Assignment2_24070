@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- Coding by CodingNepal || www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>HOME</title>
+    <link rel="stylesheet" href="style/myStyles.css" />
+  </head>
+  <body>
+  <div class="content">
+      <h1 id="pageTitle">Student Admission</h1>
+      <p id="paragraphMessage">Thanks For Choosing Our School</p>
+      <form action="/studentAdmission" method="POST" enctype="multipart/form-data">
+          <label id="uploadTitle">Select your Picture or File:</label>
+          <input type="file" name="fileToUpload">
+          <input type="submit" value="Upload">
+      </form>
+      <form action="sendConfirmationEmail" method="POST">
+          <input type="text" name="recipientEmail" placeholder="Recipient's Email" required>
+          <input type="text" name="confirmationCode" placeholder="Confirmation Code" required>
+          <input type="submit" value="Send Confirmation Email" id="button">
+      </form>
+      <div class="lang">
+          <p id="languages">Please select your preferred language:</p>
+          <select id="languageSelector" onchange="changeLanguage()">
+              <option value="en">English</option>
+              <option value="fr">French</option>
+          </select>
+      </div>
+  </div>
+  <script>
+      function changeLanguage() {
+          var selectedLanguage = document.getElementById("languageSelector").value;
+          var languageData = {
+              en: {
+                  pageTitle: "Student Admission Page",
+                  paragraphMessage: "Hope you enjoy the tour!",
+                  uploadTitle: "Select your Picture or File:",
+                  languages: "Please select your preferred language:",
+                  logi: "Login", 
+                  reg:"Register",
+                  button:"Send Confirmation Email"
+              },
+              fr: {
+                  pageTitle: "Page d'Admission des Étudiants",
+                  paragraphMessage: "J'espère que vous apprécierez la visite !",
+                  uploadTitle: "Sélectionnez votre image ou fichier :",
+                  languages: "Veuillez sélectionner votre langue préférée :",
+                  logi: "Connexion",
+                  reg:"S'inscrire",
+                  button:"Envoyer un courriel de confirmation"
+              }
+          };
+  
+          // Update the page content based on the selected language
+          document.getElementById("pageTitle").textContent = languageData[selectedLanguage].pageTitle;
+          document.getElementById("paragraphMessage").textContent = languageData[selectedLanguage].paragraphMessage;
+          document.getElementById("uploadTitle").textContent = languageData[selectedLanguage].uploadTitle;
+          document.getElementById("languages").textContent = languageData[selectedLanguage].languages;
+          document.getElementById("button").value = languageData[selectedLanguage].button;
+          document.getElementById("logi").textContent = languageData[selectedLanguage].logi; 
+          document.getElementById("reg").textContent = languageData[selectedLanguage].reg;
+      }
+  </script>
+    <!-- JavaScript -->
+    <script src="style/indexscript.js"></script>
+  </body>
+</html>
